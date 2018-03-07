@@ -35,6 +35,11 @@
 \setcounter{MaxMatrixCols}{50}
 %\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+
 
 \begin{document}
 
@@ -44,8 +49,8 @@
 \tableofcontents
 
 
-%
-%
+%\mathcal{P}
+%\mathbb{N}
 %
 %
 %
@@ -67,8 +72,8 @@ f:A^2 \rightarrow A \quad (f: A \times A \rightarrow A)
 \begin{example}\label{bin_examples}
 	Примеры бинарных операций
 	\begin{enumerate}
-		\item Сложение и усножение на множествах $N, N_0, Z, Q, R$.
-		\item Вычитание на $Z, Q, R$ - определеноб $N, N_0$ - не определено.
+		\item Сложение и усножение на множествах $\NN, \NN_0, \ZZ, \QQ, \RR$.
+		\item Вычитание на $\ZZ, \QQ, \RR$ - определеноб $\NN, \NN_0$ - не определено.
 		\item Пусть $f_1, f_2$ такие, что $f_1:(1,n)^2 \rightarrow (\overline{1,n})$, $f_2:(\overline{1,n})^2 \rightarrow(1,n)$ при этом
 		\begin{equation}
 			f_1(a,b) = \max\{a,b\},\quad f_2(a,b) = \min\{a,b\}
@@ -116,11 +121,54 @@ f:A^2 \rightarrow A \quad (f: A \times A \rightarrow A)
 \begin{determ}
 	Бинарная операция $*$ на множестве $M$ называется леводистрибутивной(праводистрибутивной) относительно операции $o$ если $\forall$ $a,b,c \in M$ выполнено условие:
 	\begin{gather}
-	a*(b \circ c) = (a*b)\circ(a*c) \qquad\mbox{ - леводистрибутивная}\\
-	(b \circ c)*a = (b*a)\circ(c*a) \qquad\mbox{ - праводистрибутивная}
+	a*(b \circ c) = (a*b)\circ(a*c) \quad\mbox{ - леводистрибутивная}\\
+	(b \circ c)*a = (b*a)\circ(c*a) \quad\mbox{ - праводистрибутивная}
 	\end{gather}
 	если выполняются оба этих равенства, то говорят, что $*$ дистрибутивна относительно операции $\circ$. Например умножение дистрибутивна к сложению.
 \end{determ}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \subsection{Алгебраические структуры с одной бинарной операцией}
@@ -158,10 +206,10 @@ f:A^2 \rightarrow A \quad (f: A \times A \rightarrow A)
 \end{determ}
 
 \begin{example}
-	\begin{enumerate}[\\]
-		\item $(N_0,+)(Q,+) \qquad 0$-нейтральные\\
-		\item $(N_0,\bullet)(Q,\bullet) \qquad 1$-нейтральные\\
-		\item $(N,+)(Z,+) \qquad $не имеют нейтрального элемента\\
+	\begin{enumerate}[]
+		\item $(\NN_0,+)(\QQ,+) \qquad 0$-нейтральные
+		\item $(\NN_0,\bullet)(\QQ,\bullet) \qquad 1$-нейтральные
+		\item $(\NN,+)(\ZZ,+) \qquad $не имеют нейтрального элемента
 	\end{enumerate}
 \end{example}
 
@@ -171,6 +219,227 @@ f:A^2 \rightarrow A \quad (f: A \times A \rightarrow A)
 \begin{proof}
 	пусть это не так, тогда $\Lambda_1, \Lambda_2$ - нейтральные элементы группоида $(G,*)$. Т.к. $\Lambda_1$ - нейтральный, то $\Lambda_1*\Lambda_2=\Lambda_2$, а т.к. $\Lambda_2$ - нейтральный, то $\Lambda_1*\Lambda_2=\Lambda_1$.\\
 	Тогда $\Lambda_1=\Lambda_2$.
+\end{proof}
+
+\begin{determ}
+	Пусть есть $(G,*)$, $\Lambda$ - нейтральный элемент. Элемент $a'\in G$ Называется симметричным элементом элемента $a \in G$, если выполнено условие:
+	\begin{equation}
+		a'*a=a*a'=\Lambda
+	\end{equation}
+\end{determ}
+
+\begin{ffff}
+	В общем случае в группоиде с нейтральным элементом $\Lambda$ элемент $\alpha$ может не иметь симметричных элементов, а может иметь $1$ или несколько симметричных элементов.
+\end{ffff}
+
+\begin{determ}
+	Группоид $(G,*)$ с ассоциативной операцией называют полугруппой.
+\end{determ}
+
+\begin{iwantthat}
+	Если в полугруппе $(G,*)$ с нейтральным элементом $\Lambda$ для элемента $\alpha$ существует симметричный элемент, то он единственный.
+\end{iwantthat}
+\begin{proof}
+	Пусть есть $\alpha'$ и $\alpha''$ - симметричные элементы для $\alpha$, тогда получается:
+	\begin{equation}
+	\alpha'=\alpha'*\Lambda=\alpha'*(\alpha*\alpha'')=(\alpha'*\alpha)*\alpha''=\Lambda*\alpha''=\alpha'' \Rightarrow \alpha'=\alpha''
+	\end{equation}
+\end{proof}
+
+\begin{determ}
+	Группоид $(G,*)$ называется группой, если выполнены условия:
+	\begin{enumerate}
+		\item $*$ - ассоциативна
+		\item в $(G,*)$ существует нейтральный элемент $\Lambda$
+		\item $\forall \alpha \in G \qquad \exists \alpha' \in G$\\
+		если кроме того выполнено:
+		\item $*$ - коммутативна,\\ то такую группу будут называть абалевой группой
+	\end{enumerate}
+\end{determ}
+
+\begin{example}
+	$(\ZZ,+), (\QQ,+), (\RR,+)$ - группы (абелева группа)\\
+	$(\QQ,\bullet), (\RR, \bullet)$ - коммутативные полугруппы с нейтральным элементом $\Lambda=1$, но они не являются группами.\\
+	$(\QQ \backslash \{0\}, \bullet), (\RR \backslash \{0\}, \bullet)$ - группы\\
+	$(\{1\},\bullet)$ - группа\\
+	$(\{1,-1\},\bullet)$ - группа\\
+\end{example}
+
+\begin{theorem}
+	В любой группе $(G,*) \qquad \forall a,b \in G$ однозначно разрешимы уравнения:\\
+	\begin{equation}
+		a*x=b \qquad y*a=b
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	С помощью непосредственной проверки, можно убедиться, что решением уравнения:\\
+	$a*x=b$ является $x=a'*b \rightarrow a*(a'*b)=b$, \\
+	и  решением уравнения:\\
+	$y*a=b$ является $y=b*a' \rightarrow (a*a')*b=b$\\
+	
+	Теперь необходимо доказать единственность этих решений. Допустим первое уравнение имеет $2$ решения $x_1, x_2$, тогда:\\
+	$a*x_1=a*x_2$ - умножим на $a'$\\
+	$a'*(a*x_1)=a'*(a*x_2) \Rightarrow (a'*a)*x_1=(a'*a)*x_2$\\
+	$\Lambda*x_1=\Lambda *x_2 \Rightarrow x_1=x_2$ - противоречие, $\Rightarrow$ существует только одно решение. Аналогично с $y$.	
+\end{proof}
+
+\begin{determ}
+	Пусть есть $(G,*)$ - полугруппа $(a_1,...,a_n)\in G$, если $a_1=a_2=..=a_n$. Тогда
+	\begin{enumerate}
+		\item  $a_1*a_2*...*a_n=a^n$, если $*$ - умножение.
+		\item $a_1*a_2*...*a_n=na$, если $*$ - сложение.
+	\end{enumerate}
+	В таком случае элемент $a^n$ называется $n$-степенью элемента $a$, элемент $na$ называется $n$-кратным элементом $a$.
+\end{determ}
+
+\begin{iwantthat}
+	Если $(G,\bullet)$ и $(G,+)$ - полугруппы, то для $\forall a \in G, \forall n_1, n_2 \in \NN$ выполнены условия:
+	\begin{enumerate}
+		\item $a^{n_1}*a^{n_2}=a^{n_1+n_2}$
+		\item $(a^{n_1})^{n_2}=a^{n_1*n_2}$
+		\item $n_1a+n_2a=(n_1+n_2)a$
+		\item $n_1(n_2a)=(n_1n_2)a$
+	\end{enumerate}
+\end{iwantthat}
+
+\begin{ffff}
+	Если группоид $(G,\bullet) и (G,+)$ являктся группой, то понятия $n$-ой степени и $n$-кратного элемента можно распространить на любое $n\in \ZZ$ для этого введем следующие обозначения:
+	\begin{enumerate}
+		\item $0$ - нейтральный элемент относительно $+$
+		\item $e$ - нейтральный элемент относительно $\bullet$
+		\item $-a$ - противоположный элемент к $a$ относительно $+$
+		\item $a^{-1}$ - обратный к $a$ относительно $\bullet$
+		\item $a^0=e$
+		\item $0*a=0$
+		\item $(a^n)^{-1}=a^{-n}$
+		\item $(-n)a=-(na)$
+	\end{enumerate}
+\end{ffff}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Кольца и поля}
+\begin{determ}
+	Кольцом называется множество $R$ с бинарными операциями $ +, \bullet $ если выполены условия:
+	\begin{enumerate}
+		\item $ (R,+) $ - абелева группа 
+		\item $ (R,\bullet) $ - полугруппа
+		\item умножение дистрибутивно относительно $+$
+	\end{enumerate}
+	при этом группа $(R,+)$ называется аддитивной группой кольца $R$.
+\end{determ}
+
+\begin{determ}
+	Кольцо $(R,+,\bullet)$ называется коммутативным, если умножение коммутативно и кольцом с единицей, если $(R,\bullet)$ - полугруппа с единицей.
+\end{determ}
+
+\begin{example}
+	\begin{enumerate}[]
+		\item $(\ZZ,+,\bullet), (\QQ,+,\bullet), (\RR,+,\bullet)$ - коммутативные кольца с единицей
+		\item $(2\ZZ,+,\bullet)$, где $2\ZZ$ - множество всех четных чисел
+		\item $R^2=\{(a,b)|a,b\in\RR\}$ - множество упорядоченных пар (кольцо не коммутативно)
+	\end{enumerate}
+	Введем на множестве $R^2$ операции сложения и умножения:
+	\begin{equation}
+	\forall(c,d)\in R^2: (a,b)+(c,d) = (a+c,b+d) \qquad (a,b)\bullet(c,d)=(ac,bd)
+	\end{equation}
+	Так как операции над парами производятся покомпонентно, то из свойств целых чисел получаем:
+	\begin{enumerate}
+		\item $+,\bullet$ в $R^2$ - коммутативны и ассоциативны
+		\item $ \bullet $ - дистрибутивна относительно $+$
+		\item $(0,0)$ - нулевой элемент
+		\item $(1,1)$ - единичный элемент
+		\item $(-a,-b)$ - противоположный элемент для $(a,b)$
+	\end{enumerate}
+	$(R^2,+,\bullet)$ - коммутативное кольцо с единицей
+\end{example}
+
+\begin{theorem}
+	$\forall a,b,c \in R^2$, где $R^2$ - произвольное кольцо с нулем, справедливы следующие выражения:
+	\begin{enumerate}
+		\item\label{e_a} $a*0=0*a=0$
+		\item\label{e_b} $-(-a)=a$
+		\item\label{e_c} $(-a)b=-(ab)$
+		\item\label{e_d} $(-a)(-b)=ab$
+		\item\label{e_e} $a(b-c)=ab-ac$
+		\item\label{e_f} $m(ab)=(ma)b, \quad m \in \ZZ$
+		\item\label{e_g} $(m_1a)(m_2b)=(m_1m_2)(ab), \quad m_1,m_2 \in \ZZ$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\underline{Пункт \ref{e_a}}: $a*0=0*a=0, \quad 0-\Lambda, \quad 0+0=0$\\
+	$a*0=a(0+0)=a*0+a*0$ прибавим к обеим частям противоположный элемент $(-a*0)$\\
+	$(a*0)-(a*0)=-a*0+a*0+a*0 \Rightarrow 0=0_a*0\Rightarrow a*0=0$\\\\
+	
+	\underline{Пункт \ref{e_b}}: $-(-a)=a$\\
+	$(-a)$ противоположный для $(a)$, $(a)$ - противоположный для $(-a)$\\\\
+	
+	\underline{Пункт \ref{e_c}}: $(-a)(b)=-(ab)$\\
+	т.к. $-(ab)$ противоположный к $(ab)$, то для доказательства достаточно показать, что $-(a)b$ противоположен $(ab)$:\\
+	$ab+(-a)b=(a+(-a))b=0*b=0$\\
+	$a*(-b)=-(ab)$ - аналогично\\\\
+	
+	\underline{Пункт \ref{e_d}}: $(-a)(-b)=ab$\\
+	$(-a)(-b)=-(a(-b))=-(-ab)=ab$\\\\
+	
+	\underline{Пункт \ref{e_e}}: $a(b-c)=ab-ac$\\
+	$a(b-c)=a(b+(-c))=ab+a(-c)=ab+(-(ac))=ab-ac$\\\\
+	
+	\underline{Пункт \ref{e_f}}: $m(ab)=(ma)b=a(mb)$\\
+	Для доказательства достаточно воспользоваться определением $n$-кратного элемента. Свойствами ассоциативности умножения пользоваться нельзя.\\
+	\begin{enumerate}
+		\item $m\in \NN \quad m(ab)=ab+ab+...+ab=(a+...+a)b=(ma)b$
+		\item $m=0 \quad m(ab)=(ma)b\Rightarrow$ из свойства \ref{e_a}
+		\item $m\in\ZZ \backslash \NN_0 \Rightarrow m=-n, \quad$ где $n\in \NN$\\
+			$-n(ab)=(-na)b \qquad (-n)a=-(na) \quad$- по определению $n$-кратного элемента\\
+			$-n(ab)=(-na)b, \quad$ так как $(-a)b=a(-b)=-ab$ 
+	\end{enumerate}
+
+	\underline{Пункт \ref{e_g}}: $(m_1a)(m_2b)=(m_1m_2)(ab)$\\
+	$(m_1a)(m_2b)=(a+a+...+a)(b+b+...+b)=ab+ab+...+ab=m_1(m_2ab)$
+	
 \end{proof}
 
 
